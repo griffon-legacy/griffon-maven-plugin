@@ -1,0 +1,86 @@
+~~
+~~  Copyright 2007 the original author or authors.
+~~  
+~~  Licensed under the Apache License, Version 2.0 (the "License");
+~~  you may not use this file except in compliance with the License.
+~~  You may obtain a copy of the License at
+~~  
+~~  http://www.apache.org/licenses/LICENSE-2.0
+~~  
+~~  Unless required by applicable law or agreed to in writing, software
+~~  distributed under the License is distributed on an "AS IS" BASIS,
+~~  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+~~  See the License for the specific language governing permissions and
+~~  limitations under the License. 
+~~
+
+    ------
+    Introduction
+    ------
+    Andres Amiray
+    ------
+    October 19, 2011 
+
+What is the Griffon plugin for Maven ?
+
+  The Griffon plugin for maven is a set of goals to easily develop a Griffon application using maven 2. 
+  
+* Goals Overview
+
+** Enhanced Griffon services for maven 2
+  
+  * <<{{{./create-pom-mojo.html}griffon:create-pom}}>> to create a maven2 pom for an existing Griffon project.
+  
+  * A <<griffon-app>> packaging defining 
+  
+    * a customized <<default lifecycle>> with the following services :
+  
+      * runs griffon unit-tests and integration-tests in <<test phase>>
+    
+      * runs (if griffon.webtest.enable = true) griffon web-tests in <<integration-test phase>>
+    
+      * copies projects dependencies of type jar which have not a provided or system scope in the lib directory.
+  
+      * creates a WAR archive using griffon which can be installed and deployed by maven.
+      
+    * a customized <<clean lifecycle>> which call the clean target of griffon and delete the libraries found 
+    in the lib directory (populated in the package phase of the default lifecycle) 
+
+** Standard Griffon services
+
+  Those goals don't require a POM to be executed. They are just wrappers around Griffon commands.
+  
+  * <<{{{./create-app-mojo.html}griffon:create-app}}>> to create a Griffon project, including the necessary 
+  directory structure, and commons files.
+  
+  * <<{{{./create-service-mojo.html}griffon:create-service}}>> to create a new service class.
+  
+  * <<{{{./create-script-mojo.html}griffon:create-script}}>> to creates a Griffon Gant Script.
+  
+  * <<{{{./create-unit-test-mojo.html}griffon:create-unit-test}}>> to create a new Griffon unit test.
+  
+  * <<{{{./create-integration-test-mojo.html}griffon:create-integration-test}}>> to create a new Griffon 
+  integration test which loads the whole Griffon environment when run.
+  
+  * <<{{{./clean-mojo.html}griffon:clean}}>> to clean a Griffon project.
+  
+  * <<{{{./test-app-mojo.html}griffon:test-app}}>> to run unit tests and integration tests..
+  
+  * <<{{{./package-mojo.html}griffon:package}}>> to package the Griffon application into the web-app folder for running.
+  
+  * <<{{{./run-app-mojo.html}griffon:run-app}}>> to run the Griffon application in Jetty.
+  
+* Usage
+
+  Instructions on how to use the Griffon plugin can be found {{{./usage.html}here}}.
+
+* Examples
+
+  To provide you with better understanding of some usages of the Griffon plugin,
+  you can take a look into the following examples:
+
+  * {{{./examples/create-a-griffon-app.html}How to start a griffon project.}}
+
+  * {{{./examples/mavenize-a-griffon-app.html}How to mavenize an existing griffon project.}}
+  
+  * {{{./examples/setup-your-IDE.html}How to setup your IDE.}}
